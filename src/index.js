@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   Animated,
   PanResponder,
-  Platform
+  Platform,
+  Easing
 } from "react-native";
 import styles from "./style";
 
@@ -15,7 +16,7 @@ const SUPPORTED_ORIENTATIONS = [
   "portrait",
   "portrait-upside-down",
   "landscape",
-  "landscape-left",
+  "landscape-left", 
   "landscape-right"
 ];
 
@@ -40,7 +41,8 @@ class RBSheet extends Component {
       Animated.timing(animatedHeight, {
         useNativeDriver: false,
         toValue: height,
-        duration: openDuration
+        duration: openDuration,
+        easing: Easing.inOut(Easing.quad),
       }).start();
     } else {
       Animated.timing(animatedHeight, {
